@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IAS Portfolio - Cybersecurity Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #1a4d5c 0%, #0d2f3a 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            animation: fadeInDown 1s ease-in;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a7a8a;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #0d5460;
+        }
+
+        section {
+            background: white;
+            margin: 30px 0;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            animation: fadeIn 1s ease-in;
+        }
+
+        h2 {
+            color: #1a7a8a;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #26a0b5;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #1a7a8a;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        h4 {
+            color: #1a7a8a;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .about-content {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 5px solid white;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, #1a7a8a 0%, #0d5460 100%);
+            padding: 25px;
+            border-radius: 10px;
+            color: white;
+            transition: transform 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .notes-section {
+            margin-top: 30px;
+        }
+
+        .lesson-card {
+            background: #f8f9fa;
+            border-left: 5px solid #1a7a8a;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .lesson-card:hover {
+            box-shadow: 0 5px 15px rgba(26, 122, 138, 0.2);
+            transform: translateX(5px);
+        }
+
+        .lesson-card h3 {
+            color: #1a7a8a;
+            margin-top: 0;
+        }
+
+        .lesson-content {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .lesson-content.active {
+            display: block;
+        }
+
+        .toggle-btn {
+            background: #1a7a8a;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background: #0d5460;
+        }
+
+        .key-points {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .attack-example {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .mitigation {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #1a7a8a;
+            font-weight: 600;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #1a7a8a;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            background: linear-gradient(135deg, #1a7a8a 0%, #0d5460 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            margin-top: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            section {
+                padding: 25px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>IAS Portfolio</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#notes">Security Notes</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <img src="https://lh3.googleusercontent.com/a/ACg8ocJRVe9wMlZGW3l8CXDX2kUhI1NHaSOBOX03AGAEwWfuM0FMYdo=s360-c-no" alt="Profile Photo" class="profile-img">
+                <div class="about-text">
+                    <p>Hello! I'm Bryan O. Barrios, a dedicated cybersecurity student focused on Information Assurance and Security. I'm passionate about protecting data, managing risks, and ensuring that systems remain resilient against evolving cyber threats.</p>
+                    <p style="margin-top: 15px;">Currently studying key IA principles such as confidentiality, integrity, availability, risk management, incident response, and secure system design. I'm also developing my skills in threat analysis, encryption, network defense, and security governance to help create safer and more reliable digital environments.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>🔐 Web Security</h3>
+                    <p>SQL Injection, XSS, Command Injection, Path Traversal</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🛠️ Security Tools</h3>
+                    <p>Burp Suite, OWASP ZAP, Wireshark</p>
+                </div>
+                <div class="skill-card">
+                    <h3>🔒 Cryptography</h3>
+                    <p>Encryption (Symmetric/Asymmetric), Hashing, Digital Certificates</p>
+                </div>
+                <div class="skill-card">
+                    <h3>☁️ Cloud & Infrastructure</h3>
+                    <p>Virtualization, Cloud Security, CASB</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="notes">
+            <h2>Learning Notes</h2>
+
+            <div class="notes-section">
+                <div class="lesson-card">
+                    <h3>Lesson 1: IT Security Fundamentals</h3>
+                    <p>Core concepts of Information Assurance and the CIA Triad</p>
+                    <button class="toggle-btn" onclick="toggleLesson('lesson1')">View Details</button>
+                    <div id="lesson1" class="lesson-content">
+                        <h4>The CIA Triad</h4>
+                        <ul>
+                            <li><strong>Confidentiality:</strong> Information only accessible to authorized parties (passwords, 2FA, encryption)</li>
+                            <li><strong>Integrity:</strong> Data remains consistent and trustworthy (hashing, checksums, validation)</li>
+                            <li><strong>Availability:</strong> Information accessible when needed (redundancy, backups)</li>
+                        </ul>
+                        
+                        <h4>Career Paths</h4>
+                        <div class="key-points">
+                            <strong>Red Team (Offensive):</strong> Vulnerability assessment, penetration testing, ethical hacking<br>
+                            <strong>Blue Team (Defensive):</strong> SOC analyst, DFIR, threat intelligence, malware analysis
+                        </div>
+                        
+                        <h4>Real-World Data Breaches</h4>
+                        <ul>
+                            <li>COMELEC: 55M voter records exposed</li>
+                            <li>Jollibee: 32M customers affected</li>
+                            <li>Wendy's PH: 80K+ records leaked</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Lesson 2: Encryption & Cloud Security</h3>
+                    <p>Cryptography fundamentals and cloud deployment models</p>
+                    <button class="toggle-btn" onclick="toggleLesson('lesson2')">View Details</button>
+                    <div id="lesson2" class="lesson-content">
+                        <h4>Types of Encryption</h4>
+                        <ul>
+                            <li><strong>Symmetric:</strong> One key for encryption/decryption (fast, efficient - AES)</li>
+                            <li><strong>Asymmetric:</strong> Public/Private key pair (secure key exchange - RSA)</li>
+                            <li><strong>Hash Functions:</strong> One-way conversion (password storage, integrity checks)</li>
+                        </ul>
+                        
+                        <h4>Cloud Deployment Models</h4>
+                        <div class="key-points">
+                            <strong>Public Cloud:</strong> Shared resources over internet (AWS, Azure)<br>
+                            <strong>Private Cloud:</strong> Organization-owned infrastructure<br>
+                            <strong>Hybrid Cloud:</strong> Mix of private and public resources<br>
+                            <strong>Community Cloud:</strong> Shared by organizations with common needs
+                        </div>
+                        
+                        <h4>OWASP Top 10</h4>
+                        <p>The most critical web application security risks that every developer and security professional should know.</p>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Lesson 3: OS Command Injection (CWE-78)</h3>
+                    <p>Understanding and preventing command injection attacks</p>
+                    <button class="toggle-btn" onclick="toggleLesson('lesson3')">View Details</button>
+                    <div id="lesson3" class="lesson-content">
+                        <h4>What is Command Injection?</h4>
+                        <p>An attack where malicious commands are executed on the host operating system through a vulnerable application.</p>
+                        
+                        <div class="attack-example">
+                            <strong>Attack Example:</strong><br>
+                            Intended: <code>LIST /home/[userName]</code><br>
+                            Attacker input: <code>;DELETE ALL FILES</code><br>
+                            Result: <code>LIST /home/; DELETE ALL FILES</code>
+                        </div>
+                        
+                        <h4>Why It's Dangerous</h4>
+                        <ul>
+                            <li>Full control of victim's machine</li>
+                            <li>Privilege escalation if app runs as root</li>
+                            <li>Can bypass authentication</li>
+                        </ul>
+                        
+                        <div class="mitigation">
+                            <strong>Mitigation Strategies:</strong>
+                            <ul>
+                                <li>Use parameterized APIs (avoid shell execution)</li>
+                                <li>Implement strict input validation (allowlist)</li>
+                                <li>Escape special characters: <code>; & && | ||</code></li>
+                                <li>Apply principle of least privilege</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Lesson 4: SQL Injection (CWE-89)</h3>
+                    <p>Database attacks through improper input handling</p>
+                    <button class="toggle-btn" onclick="toggleLesson('lesson4')">View Details</button>
+                    <div id="lesson4" class="lesson-content">
+                        <h4>What is SQL Injection?</h4>
+                        <p>A vulnerability where attackers inject malicious SQL code into queries, bypassing authentication and accessing/modifying data.</p>
+                        
+                        <div class="attack-example">
+                            <strong>Classic Authentication Bypass:</strong><br>
+                            Normal query: <code>SELECT * FROM users WHERE username='bob' AND password='pass123'</code><br>
+                            Attacker input: <code>' OR 1=1 --</code><br>
+                            Result: <code>SELECT * FROM users WHERE username='' OR 1=1 --' AND password=''</code><br>
+                            <em>The attacker is now logged in as the first user (often admin)!</em>
+                        </div>
+                        
+                        <h4>Consequences</h4>
+                        <ul>
+                            <li>Unauthorized data access (read sensitive records)</li>
+                            <li>Data modification or deletion</li>
+                            <li>Authentication bypass</li>
+                            <li>Potential system compromise</li>
+                        </ul>
+                        
+                        <div class="mitigation">
+                            <strong>Best Defense - Prepared Statements:</strong>
+                            <p>Send SQL structure first with placeholders, then data separately. Database treats input as data only, not executable code.</p>
+                            <br>
+                            <strong>Additional Defenses:</strong>
+                            <ul>
+                                <li>Input validation with allowlists</li>
+                                <li>Principle of least privilege for DB accounts</li>
+                                <li>Avoid dynamic SQL in stored procedures</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Lesson 5: Cross-Site Scripting (XSS - CWE-79)</h3>
+                    <p>Injecting malicious scripts into trusted websites</p>
+                    <button class="toggle-btn" onclick="toggleLesson('lesson5')">View Details</button>
+                    <div id="lesson5" class="lesson-content">
+                        <h4>What is XSS?</h4>
+                        <p>An attack that injects malicious JavaScript into a trusted website, bypassing the Same-Origin Policy and executing in victims' browsers.</p>
+                        
+                        <h4>Three Types of XSS</h4>
+                        <ul>
+                            <li><strong>Reflected XSS:</strong> Payload in URL, not stored on server (one-time attack via malicious link)</li>
+                            <li><strong>Stored XSS:</strong> Payload saved in database (affects all users viewing the page)</li>
+                            <li><strong>DOM-Based XSS:</strong> Client-side vulnerability in JavaScript DOM manipulation</li>
+                        </ul>
+                        
+                        <div class="attack-example">
+                            <strong>Consequences:</strong>
+                            <ul>
+                                <li>Session/cookie theft (session hijacking)</li>
+                                <li>Credential theft via keylogging</li>
+                                <li>Website defacement</li>
+                                <li>Malware distribution</li>
+                                <li>Unauthorized actions on behalf of user</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mitigation">
+                            <strong>Prevention Methods:</strong>
+                            <ul>
+                                <li><strong>Output encoding:</strong> Convert special chars (<, >, &) to entities (&lt;, &gt;, &amp;)</li>
+                                <li><strong>Input validation:</strong> Enforce strict rules for user input</li>
+                                <li><strong>Sanitization:</strong> Use trusted libraries (OWASP Java HTML Sanitizer)</li>
+                                <li><strong>HTTPOnly cookies:</strong> Prevent JavaScript from reading cookies</li>
+                                <li><strong>Content Security Policy (CSP):</strong> Control which resources can load</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Lesson 6: Path Traversal (CWE-35)</h3>
+                    <p>Escaping restricted directories to access sensitive files</p>
+                    <button class="toggle-btn" onclick="toggleLesson('lesson6')">View Details</button>
+                    <div id="lesson6" class="lesson-content">
+                        <h4>What is Path Traversal?</h4>
+                        <p>An attack that manipulates file paths to access files outside the intended restricted directory.</p>
+                        
+                        <div class="attack-example">
+                            <strong>The "../" Attack:</strong><br>
+                            Intended path: <code>/web/images/picture.jpg</code><br>
+                            Attacker input: <code>../../../../etc/passwd</code><br>
+                            Result: <code>/web/images/../../../../etc/passwd</code> → <code>/etc/passwd</code><br>
+                            <em>Attacker now accesses system password file!</em>
+                        </div>
+                        
+                        <h4>Evasion Techniques</h4>
+                        <ul>
+                            <li>Percent encoding: <code>%2e%2e%2f</code></li>
+                            <li>Double encoding: <code>%252e%252e%252f</code></li>
+                            <li>Unicode: <code>%u002e%u002e%u002f</code></li>
+                            <li>NULL bytes: <code>%00</code></li>
+                        </ul>
+                        
+                        <h4>Consequences</h4>
+                        <ul>
+                            <li>Read sensitive config files and credentials</li>
+                            <li>Access application source code</li>
+                            <li>Modify or delete critical files</li>
+                            <li>Information gathering for further attacks</li>
+                        </ul>
+                        
+                        <div class="mitigation">
+                            <strong>Defense Strategies:</strong>
+                            <ul>
+                                <li><strong>Strict allowlists:</strong> Only accept pre-approved file names/paths</li>
+                                <li><strong>Path normalization:</strong> Remove ../ sequences before processing</li>
+                                <li><strong>Least privilege:</strong> Run app with minimal file access permissions</li>
+                                <li><strong>Execution isolation:</strong> Use chroot jails or containers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Lesson 7: Burp Suite</h3>
+                    <p>Industry-standard web security testing platform</p>
+                    <button class="toggle-btn" onclick="toggleLesson('lesson7')">View Details</button>
+                    <div id="lesson7" class="lesson-content">
+                        <h4>What is Burp Suite?</h4>
+                        <p>An integrated platform for performing security testing of web applications. The Swiss Army knife of web security.</p>
+                        
+                        <h4>Core Components</h4>
+                        <ul>
+                            <li><strong>Proxy:</strong> Intercepts HTTP(S) traffic between browser and server (most crucial component)</li>
+                            <li><strong>Repeater:</strong> Manually modify and resend individual requests for testing</li>
+                            <li><strong>Intruder:</strong> Automated attack tool for SQLi, XSS testing with payloads</li>
+                            <li><strong>Scanner:</strong> Automated vulnerability scanner (Professional only)</li>
+                            <li><strong>Sequencer:</strong> Analyzes session token randomness quality</li>
+                        </ul>
+                        
+                        <div class="key-points">
+                            <strong>Editions:</strong><br>
+                            • Community (Free): Essential manual testing toolkit<br>
+                            • Professional (Paid): Advanced features + automated Scanner
+                        </div>
+                        
+                        <h4>Practice Resources</h4>
+                        <ul>
+                            <li>PortSwigger Web Security Academy (free labs)</li>
+                            <li>DVWA (Damn Vulnerable Web Application)</li>
+                            <li>TryHackMe DVWA room</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Lesson 8: Network Traffic Analysis</h3>
+                    <p>Capturing, inspecting, and analyzing network data flow</p>
+                    <button class="toggle-btn" onclick="toggleLesson('lesson8')">View Details</button>
+                    <div id="lesson8" class="lesson-content">
+                        <h4>What is Network Traffic Analysis?</h4>
+                        <p>The process of capturing, inspecting, and analyzing network data to understand ports, protocols, patterns, and identify suspicious activity.</p>
+                        
+                        <h4>OSI Model (7 Layers)</h4>
+                        <ul>
+                            <li><strong>Layer 7 - Application:</strong> User-level protocols (HTTP, FTP)</li>
+                            <li><strong>Layer 6 - Presentation:</strong> Data formatting, encryption (SSL, TLS)</li>
+                            <li><strong>Layer 5 - Session:</strong> Connection management</li>
+                            <li><strong>Layer 4 - Transport:</strong> TCP/UDP communication</li>
+                            <li><strong>Layer 3 - Network:</strong> Routing & addressing (IP)</li>
+                            <li><strong>Layer 2 - Data Link:</strong> Frames between devices (Ethernet)</li>
+                            <li><strong>Layer 1 - Physical:</strong> Hardware-level signals</li>
+                        </ul>
+                        
+                        <h4>Common Analysis Tools</h4>
+                        <div class="key-points">
+                            <strong>Command-Line:</strong> tcpdump, TShark, NGrep, tcpick<br>
+                            <strong>Graphical:</strong> Wireshark (most widely used)<br>
+                            <strong>Hardware:</strong> Network Taps, SPAN Ports
+                        </div>
+                        
+                        <h4>Analysis Process</h4>
+                        <ul>
+                            <li><strong>1. Ingest:</strong> Capture packets using tools</li>
+                            <li><strong>2. Filter:</strong> Remove irrelevant traffic noise</li>
+                            <li><strong>3. Analyze:</strong> Identify patterns and extract data</li>
+                            <li><strong>4. Detect:</strong> Use IDS/IPS to alert on threats</li>
+                        </ul>
+                        
+                        <h4>Wireshark Essentials</h4>
+                        <div class="mitigation">
+                            <strong>Display Filters:</strong>
+                            <ul>
+                                <li><code>http.request.method == GET</code></li>
+                                <li><code>ip.addr == x.x.x.x</code></li>
+                                <li><code>tcp.port == 80</code></li>
+                                <li><code>dns</code></li>
+                            </ul>
+                            <strong>Capture Filters:</strong>
+                            <ul>
+                                <li><code>host 192.168.1.10</code></li>
+                                <li><code>port 80</code></li>
+                                <li><code>not port 22</code></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Lesson 9: Email Security Fundamentals</h3>
+                    <p>Email encryption, authentication protocols, and threat analysis</p>
+                    <button class="toggle-btn" onclick="toggleLesson('lesson9')">View Details</button>
+                    <div id="lesson9" class="lesson-content">
+                        <h4>Email Security Principles</h4>
+                        <ul>
+                            <li><strong>Confidentiality:</strong> Only authorized users can access email</li>
+                            <li><strong>Integrity:</strong> Email content is not altered</li>
+                            <li><strong>Availability:</strong> Email systems accessible when needed</li>
+                            <li><strong>Authentication:</strong> Verifies sender is legitimate</li>
+                            <li><strong>Non-repudiation:</strong> Sender cannot deny sending message</li>
+                        </ul>
+                        
+                        <h4>Email Encryption Standards</h4>
+                        <div class="key-points">
+                            <strong>S/MIME:</strong> Uses digital certificates from CAs, built into enterprise email clients<br>
+                            <strong>OpenPGP:</strong> Uses public-key cryptography with Web of Trust model, decentralized
+                        </div>
+                        
+                        <h4>Common Email Threats</h4>
+                        <div class="attack-example">
+                            <ul>
+                                <li><strong>Phishing:</strong> Tricks users into giving information or installing malware</li>
+                                <li><strong>Spear Phishing:</strong> Targeted, personalized attacks</li>
+                                <li><strong>Email Spoofing:</strong> Forged sender addresses</li>
+                                <li><strong>BEC:</strong> Business Email Compromise for fraud</li>
+                                <li><strong>Malware:</strong> Delivered through attachments or links</li>
+                            </ul>
+                        </div>
+                        
+                        <h4>Email Authentication Protocols</h4>
+                        <div class="mitigation">
+                            <strong>SPF (Sender Policy Framework):</strong> Checks if sending IP is authorized<br>
+                            <strong>DKIM (DomainKeys Identified Mail):</strong> Cryptographically signs email to verify integrity<br>
+                            <strong>DMARC:</strong> Policy telling email servers how to handle SPF/DKIM failures
+                        </div>
+                        
+                        <h4>Analysis Tools</h4>
+                        <ul>
+                            <li>Message Header Analyzers (visualize email path and authentication)</li>
+                            <li><strong>REMnux Tools:</strong> emldump, msg-extractor, msgconvert, mail-parser</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lesson-card">
+                    <h3>Lesson 10: Introduction to Event Logs</h3>
+                    <p>Understanding system logs for security monitoring and incident response</p>
+                    <button class="toggle-btn" onclick="toggleLesson('lesson10')">View Details</button>
+                    <div id="lesson10" class="lesson-content">
+                        <h4>What Are Event Logs?</h4>
+                        <p>Records of significant activities or occurrences recognized by a software system. They act as a digital footprint and critical audit trail for troubleshooting and security.</p>
+                        
+                        <h4>Why Logs Matter</h4>
+                        <ul>
+                            <li><strong>Identify malicious activity:</strong> How intruders entered, what they did, evidence left behind</li>
+                            <li><strong>Digital footprint:</strong> Track logins, file access, network connections, errors</li>
+                            <li><strong>Essential information:</strong> Timestamp, source, event type, additional context</li>
+                        </ul>
+                        
+                        <h4>Common Log Types</h4>
+                        <div class="key-points">
+                            <strong>Application Logs:</strong> App-specific errors, warnings<br>
+                            <strong>Audit Logs:</strong> User actions tied to compliance<br>
+                            <strong>Security Logs:</strong> Login/logout, access control changes<br>
+                            <strong>System Logs:</strong> Boot, shutdown, kernel messages<br>
+                            <strong>Network Logs:</strong> Traffic flow, connection attempts<br>
+                            <strong>Web Server Logs:</strong> URL requests, HTTP codes, user-agents
+                        </div>
+                        
+                        <h4>Log Correlation Power</h4>
+                        <p>Combining multiple logs reveals: What happened? When? Where? Who? Was it successful? What was the result?</p>
+                        
+                        <h4>Windows Event Logs</h4>
+                        <ul>
+                            <li><strong>Format:</strong> Binary (.evt/.evtx), can be converted to XML</li>
+                            <li><strong>Location:</strong> C:\Windows\System32\winevt\Logs</li>
+                            <li><strong>Categories:</strong> System, Security, Application</li>
+                            <li><strong>Key Info:</strong> Level (severity), timestamp, source, Event ID, task category</li>
+                        </ul>
+                        
+                        <h4>Log Analysis Tools</h4>
+                        <div class="mitigation">
+                            <strong>Windows:</strong>
+                            <ul>
+                                <li><strong>Event Viewer:</strong> GUI-based viewing and filtering</li>
+                                <li><strong>Wevtutil.exe:</strong> Command-line tool for automation</li>
+                                <li><strong>Get-WinEvent:</strong> PowerShell cmdlet with advanced filtering</li>
+                            </ul>
+                            <strong>SIEM Platforms:</strong> Azure Sentinel, Splunk, IBM QRadar (centralize, correlate, alert)
+                        </div>
+                        
+                        <h4>Important Security Event</h4>
+                        <div class="attack-example">
+                            <strong>Event ID 7045:</strong> New service installed (often indicates malware or persistence mechanism)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 My Portfolio.</p>
+            <div class="social-links">
+                <a href="#" title="GitHub">GitHub</a>
+                <a href="#" title="LinkedIn">LinkedIn</a>
+                <a href="#" title="Twitter">Twitter</a>
+                <a href="#" title="Email">Email</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            e.target.reset();
+        }
+
+        function toggleLesson(lessonId) {
+            const content = document.getElementById(lessonId);
+            content.classList.toggle('active');
+        }
+
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>

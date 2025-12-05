@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IAS Portfolio - Cybersecurity Portfolio</title>
+    <title>Information Assurance & Security | Portfolio</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,10 +15,11 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #1a4d5c 0%, #0d2f3a 100%);
+            line-height: 1.7;
+            color: #e0e0e0;
+            background: linear-gradient(135deg, #0a1f2c 0%, #0d2f3a 100%);
             min-height: 100vh;
+            background-attachment: fixed;
         }
 
         .container {
@@ -25,364 +28,366 @@
             padding: 20px;
         }
 
+        /* Header with glowing lock icon */
         header {
             text-align: center;
-            padding: 60px 20px;
-            color: white;
-            animation: fadeInDown 1s ease-in;
+            padding: 100px 20px 60px;
+            position: relative;
         }
 
         header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 4.5rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #00ffcc, #00d4aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            text-shadow: 0 0 40px rgba(0, 255, 204, 0.6);
         }
 
         header p {
-            font-size: 1.3em;
-            opacity: 0.9;
+            font-size: 1.5rem;
+            color: #a0ffea;
+            opacity: 0.95;
+            font-weight: 300;
         }
 
+        /* Navigation */
         nav {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px 0;
+            background: rgba(10, 31, 44, 0.95);
+            padding: 18px 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #00ffcc44;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
         }
 
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 50px;
             flex-wrap: wrap;
         }
 
         nav a {
             text-decoration: none;
-            color: #1a7a8a;
-            font-weight: 600;
-            transition: color 0.3s;
+            color: #00ffcc;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.4s;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.4);
         }
 
         nav a:hover {
-            color: #0d5460;
+            color: #00ffcc;
+            text-shadow: 0 0 25px #00ffcc;
+            transform: translateY(-3px);
         }
 
+        /* Sections */
         section {
-            background: white;
-            margin: 30px 0;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            animation: fadeIn 1s ease-in;
+            background: rgba(13, 47, 58, 0.85);
+            margin: 40px 0;
+            padding: 45px;
+            border-radius: 18px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid #00ffcc33;
+            backdrop-filter: blur(8px);
         }
 
         h2 {
-            color: #1a7a8a;
-            margin-bottom: 20px;
-            font-size: 2em;
-            border-bottom: 3px solid #26a0b5;
-            padding-bottom: 10px;
+            color: #00ffcc;
+            margin-bottom: 25px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+            border-bottom: 4px solid #00ffcc;
+            padding-bottom: 15px;
+            display: inline-block;
         }
 
-        h3 {
-            color: #1a7a8a;
+        h3, h4 {
+            color: #00ffcc;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
             margin-top: 25px;
-            margin-bottom: 15px;
-            font-size: 1.5em;
         }
 
-        h4 {
-            color: #1a7a8a;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-size: 1.2em;
-        }
-
+        /* About Section */
         .about-content {
             display: flex;
-            gap: 30px;
+            gap: 40px;
             align-items: center;
             flex-wrap: wrap;
         }
 
         .profile-img {
-            width: 200px;
-            height: 200px;
+            width: 220px;
+            height: 220px;
             border-radius: 50%;
             object-fit: cover;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            border: 5px solid white;
+            border: 5px solid #00ffcc;
+            box-shadow: 0 0 40px rgba(0, 255, 204, 0.6);
         }
 
         .about-text {
             flex: 1;
             min-width: 300px;
+            font-size: 1.15rem;
+            line-height: 1.9;
         }
 
+        /* Skills Grid */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .skill-card {
-            background: linear-gradient(135deg, #1a7a8a 0%, #0d5460 100%);
-            padding: 25px;
-            border-radius: 10px;
-            color: white;
-            transition: transform 0.3s;
-        }
-
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .skill-card h3 {
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .notes-section {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-top: 30px;
         }
 
+        .skill-card {
+            background: linear-gradient(135deg, #0a3d4e 0%, #0f6b88 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid #00ffcc44;
+            transition: all 0.4s;
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 255, 204, 0.25);
+            border-color: #00ffcc;
+        }
+
+        .skill-card h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Lesson Cards */
         .lesson-card {
-            background: #f8f9fa;
-            border-left: 5px solid #1a7a8a;
-            padding: 25px;
+            background: rgba(15, 60, 80, 0.7);
+            border-left: 5px solid #00ffcc;
+            padding: 28px;
             margin-bottom: 25px;
-            border-radius: 8px;
-            transition: all 0.3s;
+            border-radius: 10px;
+            transition: all 0.4s;
         }
 
         .lesson-card:hover {
-            box-shadow: 0 5px 15px rgba(26, 122, 138, 0.2);
-            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0, 255, 204, 0.15);
+            transform: translateX(8px);
+            background: rgba(15, 70, 95, 0.8);
         }
 
-        .lesson-card h3 {
-            color: #1a7a8a;
-            margin-top: 0;
+        .toggle-btn {
+            background: linear-gradient(135deg, #00ffcc, #00b894);
+            color: #0a1f2c;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 25px #00ffcc;
         }
 
         .lesson-content {
             display: none;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 2px solid #e0e0e0;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed #00ffcc44;
         }
 
-        .lesson-content.active {
-            display: block;
-        }
+        .lesson-content.active { display: block; }
 
-        .toggle-btn {
-            background: #1a7a8a;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9em;
-            margin-top: 10px;
-            transition: background 0.3s;
-        }
-
-        .toggle-btn:hover {
-            background: #0d5460;
-        }
-
-        .key-points {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
+        .key-points, .mitigation {
+            background: rgba(0, 200, 150, 0.15);
+            border-left: 4px solid #00ffcc;
             padding: 15px;
+            border-radius: 8px;
             margin: 15px 0;
-            border-radius: 5px;
         }
 
         .attack-example {
-            background: #f8d7da;
-            border-left: 4px solid #dc3545;
+            background: rgba(255, 50, 80, 0.15);
+            border-left: 4px solid #ff3366;
             padding: 15px;
+            border-radius: 8px;
             margin: 15px 0;
-            border-radius: 5px;
         }
 
-        .mitigation {
-            background: #d4edda;
-            border-left: 4px solid #28a745;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 5px;
+        /* ==================== NEW CONTACT SECTION (exact sa picture) ==================== */
+        #contact {
+            text-align: center;
+            padding: 80px 20px;
+            background: transparent;
         }
 
-        code {
-            background: #f4f4f4;
-            padding: 2px 6px;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
+        #contact h2 {
+            font-size: 3rem;
+            background: linear-gradient(to right, #00ffcc, #00d4aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-bottom: none;
+            margin-bottom: 1rem;
         }
 
-        .contact-form {
-            max-width: 600px;
+        .contact-subtitle {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-size: 1.15rem;
+            color: #b0ffea;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            max-width: 650px;
             margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .form-group {
-            margin-bottom: 20px;
+        .contact-item {
+            background: rgba(0, 255, 204, 0.08);
+            padding: 24px;
+            border-radius: 16px;
+            border-left: 5px solid #00ffcc;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
         }
 
-        label {
+        .contact-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 255, 204, 0.2);
+        }
+
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: #00ffcc;
+            color: #0a1f2c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            font-size: 1.8rem;
+        }
+
+        .contact-details strong {
+            color: #00ffcc;
+            font-size: 1.2rem;
             display: block;
             margin-bottom: 5px;
-            color: #1a7a8a;
+        }
+
+        .contact-details a {
+            color: #00ffcc;
+            text-decoration: none;
+            font-size: 1.35rem;
             font-weight: 600;
         }
 
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 1em;
-            transition: border-color 0.3s;
+        .contact-details a:hover {
+            text-decoration: underline;
         }
 
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #1a7a8a;
-        }
-
-        textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        button {
-            background: linear-gradient(135deg, #1a7a8a 0%, #0d5460 100%);
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        button:hover {
-            transform: scale(1.05);
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: white;
-            margin-top: 30px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 15px;
-        }
-
-        .social-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.2em;
-            transition: transform 0.3s;
-            display: inline-block;
-        }
-
-        .social-links a:hover {
-            transform: scale(1.2);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
-            
-            section {
-                padding: 25px;
-            }
-            
-            .about-content {
+        /* Responsive for contact */
+        @media (max-width: 640px) {
+            .contact-item {
                 flex-direction: column;
                 text-align: center;
             }
+            .contact-icon {
+                margin-bottom: 15px;
+                margin-right: 0;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 50px 20px;
+            color: #a0f1ea;
+            background: rgba(10, 31, 44, 0.9);
+            margin-top: 60px;
+            border-top: 1px solid #00ffcc33;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 3rem; }
+            header::before { font-size: 4rem; }
+            header p { font-size: 1.2rem; }
+            nav ul { gap: 25px; }
+            nav a { font-size: 1rem; }
+            .about-content { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>IAS Portfolio</h1>
+            <h1>My Portfolio</h1>
         </header>
 
         <nav>
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#notes">Security Notes</a></li>
+                <li><a href="#notes">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
 
         <section id="about">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <img src="https://lh3.googleusercontent.com/a/ACg8ocJRVe9wMlZGW3l8CXDX2kUhI1NHaSOBOX03AGAEwWfuM0FMYdo=s360-c-no" alt="Profile Photo" class="profile-img">
-                <div class="about-text">
-                    <p>Hello! I'm Bryan O. Barrios, a dedicated cybersecurity student focused on Information Assurance and Security. I'm passionate about protecting data, managing risks, and ensuring that systems remain resilient against evolving cyber threats.</p>
-                    <p style="margin-top: 15px;">Currently studying key IA principles such as confidentiality, integrity, availability, risk management, incident response, and secure system design. I'm also developing my skills in threat analysis, encryption, network defense, and security governance to help create safer and more reliable digital environments.</p>
-                </div>
-            </div>
+            <h2>About Me</h2>
+            <div class="about-content">
+                <img src="https://lh3.googleusercontent.com/a/ACg8ocJRVe9wMlZGW3l8CXDX2kUhI1NHaSOBOX03AGAEwWfuM0FMYdo=s360-c-no" alt="Profile Photo" class="profile-img">
+                <div class="about-text">
+                    <p>Hello! I'm Bryan O. Barrios, a dedicated cybersecurity student focused on Information Assurance and Security. I'm passionate about protecting data, managing risks, and ensuring that systems remain resilient against evolving cyber threats.</p>
+                </div>
+            </div>
         </section>
 
         <section id="skills">
-            <h2>Skills & Expertise</h2>
+            <h2>Skills</h2>
             <div class="skills-grid">
                 <div class="skill-card">
-                    <h3>🔐 Web Security</h3>
+                    <h3>Web Security</h3>
                     <p>SQL Injection, XSS, Command Injection, Path Traversal</p>
                 </div>
                 <div class="skill-card">
-                    <h3>🛠️ Security Tools</h3>
+                    <h3>Security Tools</h3>
                     <p>Burp Suite, OWASP ZAP, Wireshark</p>
                 </div>
                 <div class="skill-card">
-                    <h3>🔒 Cryptography</h3>
+                    <h3>Cryptography</h3>
                     <p>Encryption (Symmetric/Asymmetric), Hashing, Digital Certificates</p>
                 </div>
                 <div class="skill-card">
-                    <h3>☁️ Cloud & Infrastructure</h3>
+                    <h3>Cloud & Infrastructure</h3>
                     <p>Virtualization, Cloud Security, CASB</p>
                 </div>
             </div>
         </section>
 
         <section id="notes">
-            <h2>Learning Notes</h2>
-
-            <div class="notes-section">
-                <div class="lesson-card">
+            <h2>Lesson Notes</h2>
+            <div class="lesson-card">
                     <h3>Lesson 1: IT Security Fundamentals</h3>
                     <p>Core concepts of Information Assurance and the CIA Triad</p>
                     <button class="toggle-btn" onclick="toggleLesson('lesson1')">View Details</button>
@@ -774,55 +779,67 @@
                     </div>
                 </div>
             </div>
+            
+          
         </section>
 
+        <!-- NEW CONTACT SECTION (exactong katulad sa picture) -->
         <section id="contact">
             <h2>Get In Touch</h2>
-            <form class="contact-form" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" required>
+            <p class="contact-subtitle">
+                Interested in securing your organization or discussing information security strategies? Feel free to reach out!
+            </p>
+
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <strong>Email:</strong>
+                        <a href="mailto:security@example.com">bryan.barrios@neu.edu.ph</a>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <strong>Phone:</strong>
+                        <a href="tel:+639123456789">+63 910 146 5723</a>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" required></textarea>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <strong>Location:</strong>
+                        <a href="Location">Quezon City, Metro Manila, Philippines</a>
+                    </div>
                 </div>
-                <button type="submit">Send Message</button>
-            </form>
+            </div>
         </section>
 
         <footer>
-            <p>&copy; 2025 My Portfolio.</p>
-            <div class="social-links">
-                <a href="#" title="GitHub">GitHub</a>
-                <a href="#" title="LinkedIn">LinkedIn</a>
-                <a href="#" title="Twitter">Twitter</a>
-                <a href="#" title="Email">Email</a>
-            </div>
+            <p> 2025 My Portfolio</p>
         </footer>
     </div>
 
     <script>
-        function handleSubmit(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you soon.');
-            e.target.reset();
+        function toggleLesson(id) {
+            document.getElementById(id).classList.toggle('active');
         }
 
-        function toggleLesson(lessonId) {
-            const content = document.getElementById(lessonId);
-            content.classList.toggle('active');
-        }
-
+        // Smooth scrolling
         document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
     </script>
